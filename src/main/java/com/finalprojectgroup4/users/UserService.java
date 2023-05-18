@@ -15,6 +15,10 @@ public class UserService {
     public void createUser (User user) throws  Exception{
         this.userRepository.save(user);
     }
-
+    public User verifyUser(String nickName, String password) throws Exception {
+        User user = this.userRepository.findByNickNameAndPassword(nickName, password);
+        if(user == null) throw new Exception ("Nickname or password is not correct");
+        return user;
+    }
 
 }

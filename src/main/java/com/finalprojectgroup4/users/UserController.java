@@ -3,8 +3,10 @@ package com.finalprojectgroup4.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -31,8 +33,25 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public String displayLoginPage(){
+    public String displayLoginPage(
+            @RequestParam(name="status", required=false) String status,
+            @RequestParam (name="message", required=false) String message,
+            Model model
+    ){
+        model.addAttribute ("status", status);
+        model.addAttribute ("message", message);
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String handleLogin(LoginRequest loginRequest){
+        try {
+            User loggedInUser = this.userService.verifyUser(loginRequest.nickName, loginRequest.password);
+            return "redirect:mainPage";
+        }catch (Exception exception){
+            return "redirect:login?status=LOGIN_FAILED&message=" + exception.getMessage();
+        }
+
     }
 
 }

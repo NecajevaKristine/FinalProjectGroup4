@@ -9,7 +9,8 @@ import java.sql.SQLException;
 
 @Component
 public class DatabaseRepository {
-    private Environment env;
+
+    private final Environment env;
     private static Connection connection;
 
     public DatabaseRepository(Environment env){
@@ -20,16 +21,15 @@ public class DatabaseRepository {
         try {
             String userName = env.getProperty("database.username");
             String password = env.getProperty("database.password");
-            String connectionUrl = env.getProperty("database.url");
+            String Url = env.getProperty("datasource.url");
 
-            this.connection = DriverManager.getConnection(connectionUrl, userName, password);
+            assert Url != null;
+            this.connection = DriverManager.getConnection( userName, password, Url);
         }catch (SQLException exception) {
             exception.printStackTrace();
         }
     }
-
     public Connection getConnection(){
         return connection;
     }
-
 }
