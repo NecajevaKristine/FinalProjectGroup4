@@ -7,7 +7,7 @@
     <link href="styles/register.css" rel="stylesheet">
 </head>
 <body>
-<header th:replace="~{fragments/header::not-logged-in-header}"></header>
+
 <main class="margin-top">
     <h3 class="margin-top"> Create An Account</h3>
     <form method="post" action="/register">
@@ -26,7 +26,7 @@
         </div>
         <div>
             <label>Enter your phoneNumber</label>
-            <input name="phoneNumber" type="text" required>
+            <input name="phoneNumber" type="number" required>
         </div>
         <div>
             <label>Enter your email</label>

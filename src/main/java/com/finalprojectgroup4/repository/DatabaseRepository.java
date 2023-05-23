@@ -1,4 +1,4 @@
-package com.finalprojectgroup4.repository;
+/*package com.finalprojectgroup4.repository;
 
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -19,12 +19,12 @@ public class DatabaseRepository {
     }
     private void setupDatabase() {
         try {
-            String userName = env.getProperty("database.username");
+            String username = env.getProperty("database.username");
             String password = env.getProperty("database.password");
-            String Url = env.getProperty("datasource.url");
+            String connectionUrl = env.getProperty("database.url");
 
-            assert Url != null;
-            this.connection = DriverManager.getConnection( userName, password, Url);
+            //assert url != null;
+            this.connection = DriverManager.getConnection( connectionUrl, username, password);
         }catch (SQLException exception) {
             exception.printStackTrace();
         }
@@ -32,4 +32,4 @@ public class DatabaseRepository {
     public Connection getConnection(){
         return connection;
     }
-}
+}*/
