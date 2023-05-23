@@ -23,6 +23,7 @@ import jakarta.persistence.GeneratedValue;
 @Entity
 
 public class Todo {
+   @jakarta.persistence.Id
    @Id
    @GeneratedValue
    private Long id;
@@ -34,4 +35,12 @@ public class Todo {
    Timestamp createdAt;
    @UpdateTimestamp
    Timestamp updatedAt;
+
+   public void setId(Long id) {
+      this.id = id;
+   }
+
+   public Long getId() {
+      return id;
+   }
 }

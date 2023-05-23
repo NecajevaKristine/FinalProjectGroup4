@@ -27,13 +27,7 @@
             <button class="button red-theme" type="reset">clear form</button>
         </div>
     </form>
-    <section th:if="${status !=null}">
-        <div th:if="${status == 'REGISER_SUCCESS'}">
-            <span class="green-theme">Account created successfully.Please login to continue</span>
-        </div>
-        <div th:if="${status == 'LOGIN_FAILED'}">
-            <span class="red-theme" th:text="${message}"></span>
-        </div>
+    
     </section>
 </main>
 </body>
