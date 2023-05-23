@@ -1,24 +1,27 @@
 package com.finalprojectgroup4.users;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Entity;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EntityScan
+@Entity
 public class User {
     @Id
-    private Long id;
-    private String email;
-    private Integer phoneNumber;
-    private String password;
-    private String nickName;
-    private String fullName;
-    private String createdAt;
-    private String updatedAt;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+     Long id;
+     String email;
+     Integer phoneNumber;
+     String password;
+     String nickName;
+     String fullName;
+     String createdAt;
+     String updatedAt;
 }
